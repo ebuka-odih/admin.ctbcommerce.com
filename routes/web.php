@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DebitCardController;
 use App\Http\Controllers\InternalTransferController;
 use App\Http\Controllers\NewAccountController;
@@ -21,57 +22,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('demo', [AccountController::class, 'demo']);
-Route::post('demo', [AccountController::class, 'storeDemo'])->name('storeDemo');
 
-Route::view('/', 'pages.index')->name('index');
-Route::view('/personal/checking', 'pages.personal.checking')->name('personal.checking');
+Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('admin');
 
-
-Route::get('signup/personal-info', [NewAccountController::class, 'personalInfo'])->name('personalInfo');
-Route::post('signup/personal-info', [NewAccountController::class, 'storeAccountInfo'])->name('storeAccountInfo');
-Route::get('account/setup/xd{id}3et64', [NewAccountController::class, 'accountSetup'])->name('accountSetup');
-Route::post('account/setup/', [NewAccountController::class, 'storeAccountSetup'])->name('storeAccountSetup');
-Route::get('account/terms-and-conditions/xd{id}3et64', [NewAccountController::class, 'terms'])->name('terms');
-Route::get('account/review/xd{id}3et64', [NewAccountController::class, 'accountReview'])->name('accountReview');
-Route::get('submit/details/xd{id}3et64', [NewAccountController::class, 'submitDetails'])->name('submitDetails');
-
-// Route for OTP verification
-Route::get('/otp-verification', [OTPVerificationController::class, 'show'])->name('otp-verification');
-Route::post('/otp-verification', [OTPVerificationController::class, 'verify'])->name('otp-verify');
-Route::get('/resend-otp', [OTPVerificationController::class, 'sendOTP'])->name('send-otp');
-
-Route::get('testing/{id}', [UserController::class, 'testing'])->name('testing');
-Route::get('pending/{id}', [UserController::class, 'acctPending'])->name('acctPending');
-
-
-Route::group(['middleware' => ['auth', 'active'], 'prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    Route::get('profile', [UserController::class, 'profile'])->name('profile');
-    Route::get('support', [UserController::class, 'support'])->name('support');
-
-    Route::get('transfer', [TransferController::class, 'transfer'])->name('transfer');
-    Route::get('transactions', [TransferController::class, 'transactions'])->name('transactions');
-    Route::post('storeTransfer', [TransferController::class, 'storeTransfer'])->name('storeTransfer');
-    Route::get('first/transfer/code/{id}', [TransferController::class, 'firstCode'])->name('firstCode');
-    Route::post('first/transfer/code', [TransferController::class, 'storeFirstCode'])->name('storeFirstCode');
-    Route::get('second/transfer/code/{id}', [TransferController::class, 'secondCode'])->name('secondCode');
-    Route::post('second/transfer/code/', [TransferController::class, 'storeSecondCode'])->name('storeSecondCode');
-    Route::get('third/transfer/code/{id}', [TransferController::class, 'thirdCode'])->name('thirdCode');
-    Route::post('third/transfer/code/', [TransferController::class, 'storeThirdCode'])->name('storeThirdCode');
-    Route::get('transfer/success/{id}', [TransferController::class, 'transferSuccess'])->name('transferSuccess');
-
-    // Card Route
-    Route::resource('card', DebitCardController::class);
-
-    //  Password Route
-    Route::get('security', [UserController::class, 'password'])->name('password');
-    Route::get('storePassword', [UserController::class, 'storePassword'])->name('storePassword');
-
-    Route::get('messages', [SendMessageController::class, 'messages'])->name('messages');
-    Route::get('view/message/{id}', [SendMessageController::class, 'viewMessage'])->name('viewMessage');
-
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
