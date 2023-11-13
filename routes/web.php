@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('admin');
+Route::view('/','auth.login')->name('index');
+//Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('admin');
 
 
 Route::get('/dashboard', function () {
