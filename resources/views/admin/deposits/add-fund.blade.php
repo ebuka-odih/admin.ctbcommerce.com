@@ -67,7 +67,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
+                                    <label for="example-ltf-text">Date</label>
+                                    <input type="date" class="form-control form-control-lg" id="example-if-password" name="note" placeholder="Description">
+                                </div>
+                                <div class="col-lg-3">
                                     <label for="example-ltf-text">Description</label>
                                     <input type="text" class="form-control form-control-lg" id="example-if-password" name="note" placeholder="Description">
                                 </div>

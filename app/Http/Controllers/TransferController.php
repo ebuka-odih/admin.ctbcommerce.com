@@ -48,10 +48,13 @@ class TransferController extends Controller
             $transfer->save();
 
             //send mail
-            $user = Auth::user();
-            $data = ['user' => $user, 'transfer' => $transfer];
-//            Mail::to($user->email)->send(new DebitAlert($data));
-//            Mail::to($transfer->ben_email)->send(new CreditAlert($data));
+
+            if (\auth()->user()->send_email == 1){
+                $user = Auth::user();
+                $data = ['user' => $user, 'transfer' => $transfer];
+                Mail::to($user->email)->send(new DebitAlert($data));
+                Mail::to($transfer->ben_email)->send(new CreditAlert($data));
+            }
             return redirect()->route('user.transferSuccess', $transfer->id);
         }
         return redirect()->route('user.firstCode', $data->id);

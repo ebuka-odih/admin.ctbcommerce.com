@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CreditAlert extends Mailable
+class DepositMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,10 +18,10 @@ class CreditAlert extends Mailable
      *
      * @return void
      */
-    public $data;
-    public function __construct($data)
+    public $deposit;
+    public function __construct($deposit)
     {
-        $this->data = $data;
+        $this->deposit = $deposit;
     }
 
     /**
@@ -32,7 +32,7 @@ class CreditAlert extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Payment Notification',
+            subject: 'Credit Notification',
         );
     }
 
@@ -44,7 +44,7 @@ class CreditAlert extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.credit-alert',
+            view: 'emails.deposit_mail',
         );
     }
 

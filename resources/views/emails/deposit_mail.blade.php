@@ -57,57 +57,26 @@
 
                                     <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <h4>NOTIFICATION OF PAYMENT</h4>
-                                            <p>
-                                                To Whom it may Concern:
-                                            </p>
-                                            <strong>
-                                                {{ env('APP_NAME') }} here confirms that the following payment instruction has been received:
-                                            </strong>
+                                            <h4>CREDIT NOTIFICATION</h4>
 
+                                            <p><strong>{{ $data['user']->account->currency }}@money($data['transfer']->amount)</strong>
+                                            </p>
                                             <h5 class="mt-4">PAYER DETAILS</h5>
                                             <table>
                                                 <tr>
-                                                    <th>Account Name:</th>
-                                                    <td>{{ $data['transfer']->from }}</td>
+                                                    <th>From:</th>
+                                                    <td>{{ $deposit->from }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Amount:</th>
-                                                    <td>@money($data['transfer']->amount) {{ $data['user']->account->currency }}</td>
-                                                </tr>
-                                            </table>
-                                            <table class="table table-striped mt-3">
-                                                <tr>
-                                                    <th>Account Name:</th>
-                                                    <td>{{ $data['transfer']->ben_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Account Number:</th>
-                                                    <td>{{ $data['transfer']->acct_number }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th>Description:</th>
-                                                    <td >{{ $data['transfer']->note }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Transaction ID:</th>
-                                                    <td >{{ $data['transfer']->transId() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Amount:</th>
-                                                    <td>@money($data['transfer']->amount) {{ $data['user']->account->currency }}</td>
+                                                    <td>@money($deposit->amount) {{ auth()->user()->currency }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Date:</th>
-                                                    <td>{{ date('D, M d, Y', strtotime($data['transfer']->created_at)) }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Time:</th>
-                                                    <td>{{ date('h:i A', strtotime($data['transfer']->created_at)) }}</td>
+                                                    <td>{{ date('d M, Y h:i A', strtotime($deposit->created_at)) }}</td>
                                                 </tr>
                                             </table>
-                                            <br>
+
                                         </td>
                                     </tr>
 
