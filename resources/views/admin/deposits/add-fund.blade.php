@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label for="example-ltf-text">Date</label>
-                                    <input type="datetime-local" class="form-control form-control-lg" id="example-if-password" name="note" placeholder="Description">
+                                    <input type="date" class="form-control form-control-lg" id="example-if-password" name="note" placeholder="Description">
                                 </div>
                                 <div class="col-lg-3">
                                     <label for="example-ltf-text">Description</label>
