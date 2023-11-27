@@ -62,13 +62,17 @@
                                                 To Whom it may Concern:
                                             </p>
                                             <strong>
-                                                {{ env('APP_NAME') }} here confirms that the following payment instruction has been received:
+                                                {{ env('APP_NAME') }} hereby confirms that the following payment instruction has been received:
                                             </strong>
 
                                             <h5 class="mt-4">PAYER DETAILS</h5>
                                             <table>
                                                 <tr>
                                                     <th>Account Name:</th>
+                                                    <td>{{ $data['user']->first_name.' '.$data['user']->last_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Account Number:</th>
                                                     <td>{{ $data['transfer']->from }}</td>
                                                 </tr>
                                                 <tr>
@@ -101,10 +105,6 @@
                                                 <tr>
                                                     <th>Date:</th>
                                                     <td>{{ date('D, M d, Y', strtotime($data['transfer']->created_at)) }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Time:</th>
-                                                    <td>{{ date('h:i A', strtotime($data['transfer']->created_at)) }}</td>
                                                 </tr>
                                             </table>
                                             <br>
