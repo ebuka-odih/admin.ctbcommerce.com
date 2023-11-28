@@ -63,11 +63,11 @@
                                             <table>
                                                 <tr>
                                                     <th>Amount:</th>
-                                                    <td>@money($deposit->amount) {{ auth()->user()->account->currency() }}</td>
+                                                    <td>@money($data['debit']->amount) {{ auth()->user()->account->currency() }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Date:</th>
-                                                    <td>{{ date('d M, Y h:i A', strtotime($deposit->created_at)) }}</td>
+                                                    <td>{{ date('d M, Y h:i A', strtotime($data['debit']->created_at)) }}</td>
                                                 </tr>
                                             </table>
 
