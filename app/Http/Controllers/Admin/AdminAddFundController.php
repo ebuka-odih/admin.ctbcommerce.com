@@ -19,8 +19,8 @@ class AdminAddFundController extends Controller
     public function addFund()
     {
         $users = User::all();
-        $deposits = AddFund::all();
-        $debit = DebitFund::all();
+        $deposits = AddFund::latest()->get();
+        $debit = DebitFund::latest()->get();
         return view('admin.deposits.add-fund', compact('users', 'deposits', 'debit'));
     }
 
