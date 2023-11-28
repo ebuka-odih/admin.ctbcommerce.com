@@ -63,7 +63,7 @@
                                             <table>
                                                 <tr>
                                                     <th>Amount:</th>
-                                                    <td>@money($deposit->amount) {{ auth()->user()->currency() }}</td>
+                                                    <td>@money($deposit->amount) {{ auth()->user()->account->currency() }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Date:</th>

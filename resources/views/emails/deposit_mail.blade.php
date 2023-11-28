@@ -60,7 +60,7 @@
                                         <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             <h4>CREDIT NOTIFICATION</h4>
 
-                                            <p><strong>{{ $data['user']->account->currency }}@money($data['transfer']->amount)</strong>
+                                            <p><strong>{{ auth()->user()->account->currency() }}@money($deposit->amount)</strong>
                                             </p>
                                             <h5 class="mt-4">PAYER DETAILS</h5>
                                             <table>
@@ -70,7 +70,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Amount:</th>
-                                                    <td>@money($deposit->amount) {{ auth()->user()->currency() }}</td>
+                                                    <td>@money($deposit->amount) {{ auth()->user()->account->currency() }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Date:</th>
