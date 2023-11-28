@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\DepositMail;
+use App\Mail\FundDebit;
 use App\Models\AddFund;
 use App\Models\DebitFund;
 use App\Models\User;
@@ -43,6 +44,8 @@ class AdminAddFundController extends Controller
             $user = User::findOrFail($request->user_id);
             $user->account->balance -= $request->amount;
             $user->account->save();
+            $data = ['user' => $user, 'debit' => $debit];
+            Mail::to($user->email)->send(new FundDebit($data));
             return redirect()->back()->with('success', "Money Debited");
         } else {
             $deposit = new AddFund();
@@ -57,7 +60,6 @@ class AdminAddFundController extends Controller
             $user->account->balance += $request->amount;
             $user->account->save();
             Mail::to($user->email)->send(new DepositMail($deposit));
-            Notification::route('mail', $user->email)->notify(new DepositAlert($deposit));
             return redirect()->back()->with('success', "Money Added");
         }
 

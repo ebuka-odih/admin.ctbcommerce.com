@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>{{ env('APP_NAME') }}</title>
+    <style>
+        table, th, td {
+            border: 1px solid rgb(101, 101, 101);
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body class="bg-light">
 
@@ -41,54 +51,29 @@
                                     <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Dear <strong style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                            {{ $user->title.' '.$user->first_name }}.</strong>
+                                                {{ $data['user']->title }} {{ $data['user']->first_name }}.
+                                            </strong>
                                         </td>
                                     </tr>
 
                                     <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <strong>
-                                                We are delighted to inform you that your bank account with {{ env('APP_NAME') }} has been successfully created. Welcome to our banking family!
-                                            </strong>
-                                            <h5 class="mt-4">Account Summary</h5>
-                                            <table class="table table-striped mt-3">
+                                            <h4>DEBIT NOTIFICATION</h4>
+
+                                            <table>
                                                 <tr>
-                                                    <th>Full Name:</th>
-                                                    <td>{{ $user->fullname() }}</td>
+                                                    <th>Amount:</th>
+                                                    <td>@money($deposit->amount) {{ auth()->user()->currency() }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Account Number:</th>
-                                                    <td >{{ $user->account->account_number }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Account Type:</th>
-                                                    <td class="text-capitalize">{{ $user->account->account_type }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Currency Type:</th>
-                                                    <td>{{ $user->account->currency() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Username:</th>
-                                                    <td>{{ $user->username }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Password:</th>
-                                                    <td>{{ $user->pass }}</td>
+                                                    <th>Date:</th>
+                                                    <td>{{ date('d M, Y h:i A', strtotime($deposit->created_at)) }}</td>
                                                 </tr>
                                             </table>
-                                            <br>
-                                            <p>To get started, you can log in to your online banking portal using the provided credentials. If you have any questions or require assistance with setting up your online banking, please do not hesitate to contact our customer support team at
-                                                {{ env('MAIL_FROM_ADDRESS') }}</p>
+
                                         </td>
                                     </tr>
 
-
-                                    <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                        <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            Thank you for choosing <b>{{ env('APP_NAME') }}</b> as your trusted banking partner. We look forward to serving you and helping you achieve your financial goals.
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </td>

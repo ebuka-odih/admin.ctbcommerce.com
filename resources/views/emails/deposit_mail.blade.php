@@ -51,7 +51,8 @@
                                     <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Dear <strong style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                {{ $data['transfer']->ben_name }}.</strong>
+                                                {{ $deposit->user->title }} {{ $deposit->user->fullname() }}.
+                                            </strong>
                                         </td>
                                     </tr>
 
@@ -69,7 +70,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Amount:</th>
-                                                    <td>@money($deposit->amount) {{ auth()->user()->currency }}</td>
+                                                    <td>@money($deposit->amount) {{ auth()->user()->currency() }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Date:</th>
