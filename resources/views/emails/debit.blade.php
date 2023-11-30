@@ -66,6 +66,10 @@
                                                     <td>@money($data['debit']->amount) {{ auth()->user()->account->currency() }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Description:</th>
+                                                    <td> {{ $data['debit']->note }}</td>
+                                                </tr>
+                                                <tr>
                                                     <th>Date:</th>
                                                     <td>{{ date('d M, Y h:i A', strtotime($data['debit']->created_at)) }}</td>
                                                 </tr>
