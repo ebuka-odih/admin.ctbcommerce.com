@@ -8,7 +8,7 @@
         <div class="bg-body-light">
             <div class="content content-full">
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                    <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Deposit</h1>
+                    <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Add / Remove Fund</h1>
                 </div>
             </div>
         </div>
@@ -20,9 +20,7 @@
 
             <!-- Layouts -->
             <div class="block block-rounded">
-                <div class="block-header block-header-default">
-                    <h3 class="block-title">Make A Deposit</h3>
-                </div>
+
                 <div class="block-content">
 
                     <div class="row">
@@ -127,6 +125,7 @@
                                                 <tr>
                                                     {{--                                        <th class="text-center sorting sorting_asc" style="width: 80px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">#</th>--}}
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Sender</th>
+                                                    <th class="d-none d-sm-table-cell sorting" style="width: 15%;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">Type</th>
                                                     <th class="d-none d-sm-table-cell sorting" style="width: 15%;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">Receiver</th>
                                                     <th class="d-none d-sm-table-cell sorting" style="width: 30%;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Date</th>
                                                     <th class="sorting"  tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending">Amount</th>
@@ -139,6 +138,7 @@
                                                     <tr class="odd">
                                                         {{--                                        <td class="text-center sorting_1">1</td>--}}
                                                         <td class="fw-semibold"> <a href="">{{ $item->from }}</a> </td>
+                                                        <td class="fw-semibold"> {{ $item->type() }} </td>
                                                         <td class="d-none d-sm-table-cell"> {{ $item->user->first_name." ".$item->user->last_name }}(@money(optional($item->user->account)->balance)) </td>
                                                         <td class="d-none d-sm-table-cell"> {{ date('Y-M-d', strtotime($item->created_at)) }} <span class="badge bg-primary">{{ date('h:i a', strtotime($item->created_at)) }}</span>  ({{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }})</td>
                                                         <td class="fw-semibold">$@money($item->amount) </td>

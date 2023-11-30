@@ -11,12 +11,6 @@
         <div class="block block-rounded">
             <div class="block-content block-content-full">
                 <div class="row text-center">
-{{--                    <div class="col-md-3 py-3">--}}
-{{--                        <div class="fs-1 fw-light text-dark mb-1">--}}
-{{--                            {{ optional($user->account)->currency }}@money(optional(auth()->user()->account)->ledger_balance)--}}
-{{--                        </div>--}}
-{{--                        <a class="link-fx fs-sm fw-bold text-uppercase text-muted" href="javascript:void(0)">Ledger Balance</a>--}}
-{{--                    </div>--}}
                     <div class="col-md-4 py-3">
                         <div class="fs-1 fw-light text-info mb-1">
                             {{ optional($user->account)->currency }}@money(optional(auth()->user()->account)->balance)

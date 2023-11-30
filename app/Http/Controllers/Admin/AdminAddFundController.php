@@ -7,6 +7,7 @@ use App\Mail\DepositMail;
 use App\Mail\FundDebit;
 use App\Models\AddFund;
 use App\Models\DebitFund;
+use App\Models\Funding;
 use App\Models\User;
 use App\Notifications\DepositAlert;
 use Illuminate\Http\Request;
@@ -19,9 +20,9 @@ class AdminAddFundController extends Controller
     public function addFund()
     {
         $users = User::all();
-        $deposits = AddFund::latest()->get();
-        $debit = DebitFund::latest()->get();
-        return view('admin.deposits.add-fund', compact('users', 'deposits', 'debit'));
+        $deposits = Funding::where('type', 2)->latest()->get();
+        $debit = Funding::where('type', 1)->latest()->get();
+        return view('admin.funding.funding', compact('users', 'deposits', 'debit'));
     }
 
     public function storeDeposit(Request $request)
@@ -33,7 +34,8 @@ class AdminAddFundController extends Controller
         ]);
 
         if ($request->type == 'debit') {
-            $debit = new DebitFund();
+            $debit = new Funding();
+            $debit->type = 1;
             $debit->from = $request->from;
             $debit->amount = $request->amount;
             $debit->note = $request->note;
@@ -48,7 +50,8 @@ class AdminAddFundController extends Controller
             Mail::to($user->email)->send(new FundDebit($data));
             return redirect()->back()->with('success', "Money Debited");
         } else {
-            $deposit = new AddFund();
+            $deposit = new Funding();
+            $deposit->type =2;
             $deposit->from = $request->from;
             $deposit->amount = $request->amount;
             $deposit->note = $request->note;

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DebitFund extends Model
+class Funding extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -25,5 +25,15 @@ class DebitFund extends Model
             return "<span class='badge rounded-pill bg-warning'>Pending</span>";
         }
         return "<span class='badge rounded-pill bg-success'>Successful</span>";
+    }
+
+
+    public function type()
+    {
+        if ($this->type == 1)
+        {
+            return "Debit";
+        }
+        return "Credit";
     }
 }
