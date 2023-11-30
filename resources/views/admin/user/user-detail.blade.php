@@ -217,11 +217,11 @@
                                         </tr>
                                         <tr>
                                             <th>ID Image Front:</th>
-                                            <td><img width="200" height="150" src="{{ asset('files/'.$user->id_front_img) }}" alt=""></td>
+                                            <td><img width="200" height="150" src="{{ asset('https://ctbcommerce.com/files/'.$user->id_front_img) }}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <th>ID Image Back:</th>
-                                            <td><img width="200" height="150" src="{{ asset('files/'.$user->id_back_img) }}" alt=""></td>
+                                            <td><img width="200" height="150" src="{{ asset('https://ctbcommerce.com/files/'.$user->id_back_img) }}" alt=""></td>
                                         </tr>
                                     </table>
 
