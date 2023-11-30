@@ -46,20 +46,20 @@ class AccountController extends Controller
         if ($request->hasFile('id_front_img')) {
             $image = $request->file('id_front_img');
             $input1['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input1['imagename']);
         }
         // Upload and store the second image
         if ($request->hasFile('id_back_img')) {
             $image = $request->file('id_back_img');
             $input2['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input2['imagename']);
         }
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $input3['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input3['imagename']);
         }
         $id = $request->user_id;
@@ -167,7 +167,7 @@ class AccountController extends Controller
         if ($request->hasFile('id_front_img')) {
             $image = $request->file('id_front_img');
             $input1['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input1['imagename']);
 
             $user->id_front_img = $input1['imagename'];
@@ -178,7 +178,7 @@ class AccountController extends Controller
         if ($request->hasFile('id_back_img')) {
             $image = $request->file('id_back_img');
             $input2['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input2['imagename']);
 
             $user->id_back_img = $input2['imagename'];
@@ -188,7 +188,7 @@ class AccountController extends Controller
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $input3['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/files');
+            $destinationPath = public_path('https://ctbcommerce.com/files');
             $image->move($destinationPath, $input3['imagename']);
 
             $user->avatar = $input3['imagename'];
