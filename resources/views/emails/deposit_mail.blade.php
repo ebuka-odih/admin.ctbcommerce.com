@@ -11,7 +11,7 @@
     <title>{{ env('APP_NAME') }}</title>
     <style>
         table, th, td {
-            border: 1px solid rgb(101, 101, 101);
+            /*border: 1px solid rgb(101, 101, 101);*/
             border-collapse: collapse;
         }
         th, td {
@@ -73,6 +73,10 @@
                                                     <td>@money($deposit->amount) {{ auth()->user()->account->currency() }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Description:</th>
+                                                    <td>{{ $deposit->note }}</td>
+                                                </tr>
+                                                <tr>
                                                     <th>Date:</th>
                                                     <td>{{ date('d M, Y h:i A', strtotime($deposit->created_at)) }}</td>
                                                 </tr>
@@ -83,6 +87,11 @@
 
                                     </tbody>
                                 </table>
+                            </td>
+                        </tr>
+                        <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                            <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                Thank you for choosing <b>{{ env('APP_NAME') }}</b>
                             </td>
                         </tr>
                         </tbody>
